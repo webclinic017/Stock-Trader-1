@@ -115,8 +115,8 @@ def load_stocks_data(folderpath):
     return df_train, df_test
 
 
-def load_stock_ticker(ticker: str):
-    filepath = f'../data/interim/stocks/{ticker}.csv'
+def load_stock_ticker(ticker: str, folderpath='../data/interim/stocks/'):
+    filepath = f'{folderpath}{ticker}.csv'
     df = pd.read_csv(filepath)
     df.index = df['Date'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d')).values
     df['sma9gt21'] = df['sma9gt21'].astype(int)
